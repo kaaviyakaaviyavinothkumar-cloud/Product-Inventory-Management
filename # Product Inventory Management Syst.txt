@@ -1,0 +1,41 @@
+# Product Inventory Management System
+
+inventory = {}
+
+def add_product():
+    name = input("Enter product name: ")
+    quantity = int(input("Enter quantity: "))
+    price = float(input("Enter price: "))
+    
+    inventory[name] = {"quantity": quantity, "price": price}
+    print("Product added successfully!\n")
+
+def view_products():
+    if not inventory:
+        print("Inventory is empty.\n")
+        return
+    
+    print("\nProduct List")
+    print("----------------------")
+    for product, details in inventory.items():
+        print(f"Name: {product}, Quantity: {details['quantity']}, Price: {details['price']}")
+    print()
+
+def update_product():
+    name = input("Enter product name to update: ")
+    
+    if name in inventory:
+        quantity = int(input("Enter new quantity: "))
+        price = float(input("Enter new price: "))
+        
+        inventory[name]["quantity"] = quantity
+        inventory[name]["price"] = price
+        print("Product updated successfully!\n")
+    else:
+        print("Product not found.\n")
+
+def delete_product():
+    name = input("Enter product name to delete: ")
+    
+    if name in inventory:
+        del inventory[name]
